@@ -468,6 +468,44 @@
   </section>
 
   <!-- Bootstrap 5 JS Bundle -->
+  <!--Initialize a new project folder
+Create a new directory and initialize a Node.js project:
+mkdir bootstrap-sass-custom
+cd bootstrap-sass-custom
+npm init -y
+Install Bootstrap via npm
+Use npm to install Bootstrap locally:
+npm install bootstrap
+Install Sass (if not already installed globally)
+  
+Sass is required to compile Bootstrap from source:
+npm install -g sass
+Create your project structure
+Organize files for custom Sass:
+Exercise 19.2: Customize primary colors and border radius via _variables.scss and recompile Bootstrap
+Override Bootstrap’s variables
+In the _variables.scss file, override Bootstrap’s default values:
+
+// _variables.scss
+$primary: #ff5733;          // Set a custom primary color (bright orange)
+$border-radius: 1rem;       // Increase border radius for rounder components
+Import Bootstrap into your custom.scss
+Use this SCSS file to compile Bootstrap with your overrides:
+// custom.scss
+@import 'variables';                                 // Import custom variable overrides
+@import '../node_modules/bootstrap/scss/bootstrap';  // Import Bootstrap source files
+Compile your custom SCSS
+Run this command to generate the final CSS:
+sass scss/custom.scss dist/css/bootstrap-custom.css
+This compiles Bootstrap with your custom settings into a new CSS file.
+
+Use your custom Bootstrap CSS in HTML-->
+/Link the new CSS file in your index.html and use Bootstrap classes normally:
+<!-- index.html -->
+<link rel="stylesheet" href="dist/css/bootstrap-custom.css">
+
+<h1 class="text-primary">Custom Bootstrap Sass</h1>
+<button class="btn btn-primary rounded">Rounded Button</button>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
