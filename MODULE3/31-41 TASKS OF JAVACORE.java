@@ -1,6 +1,5 @@
 // 31. Basic JDBC Connection
 // Connect to a local SQLite database and retrieve data from "students" table
-
 import java.sql.*;
 
 public class BasicJDBCConnection {
