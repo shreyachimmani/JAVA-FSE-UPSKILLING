@@ -49,29 +49,30 @@ public class MethodOverloading {
 
 import java.util.Scanner;
 
-public class RecursiveFibonacci {
-
-    public static int fibonacci(int n) {
-        if (n == 1) return 0;
-        else if (n == 2) return 1;
-        else return fibonacci(n - 1) + fibonacci(n - 2);
+public class FibonacciRecursive {
+    
+    // Recursive method to get nth Fibonacci number
+    static int fibonacci(int n) {
+        if (n <= 1)
+            return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
+    // Main method to take input and print series
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of terms (n): ");
+        int n = sc.nextInt();
 
-        System.out.print("Enter the position (positive integer) in Fibonacci series: ");
-        int n = scanner.nextInt();
-
-        if (n <= 0) {
-            System.out.println("Please enter a positive integer.");
-        } else {
-            System.out.println("Fibonacci number at position " + n + " is: " + fibonacci(n));
+        System.out.print("Fibonacci Series up to " + n + " terms: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(fibonacci(i) + " ");
         }
 
-        scanner.close();
+        sc.close();
     }
 }
+
 // 14. Array Sum and Average
 // Objective: Work with arrays and perform calculations.
 
