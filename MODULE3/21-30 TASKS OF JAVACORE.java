@@ -46,19 +46,24 @@ public class FileWritingDemo {
         System.out.print("Enter a string to write to file: ");
         String data = scanner.nextLine();
 
-        try (FileWriter writer = new FileWriter("output.txt")) {
+        // Set 'true' to append, 'false' to overwrite
+        boolean appendToFile = false;
+
+        try (FileWriter writer = new FileWriter("output.txt", appendToFile)) {
             writer.write(data);
+            writer.write(System.lineSeparator()); // Write a newline after the data
             System.out.println("Data has been written to output.txt");
         } catch (IOException e) {
             System.out.println("An error occurred while writing to file.");
+            e.printStackTrace();  // Show detailed error
+        } finally {
+            scanner.close();
         }
-
-        scanner.close();
     }
 }
+
 // 23. File Reading
 // Objective: Read data from a file.
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -73,9 +78,11 @@ public class FileReadingDemo {
             }
         } catch (IOException e) {
             System.out.println("An error occurred while reading the file.");
+            e.printStackTrace();  // Show detailed error
         }
     }
 }
+
 // 24. ArrayList Example
 // Objective: Use dynamic arrays.
 
@@ -174,8 +181,6 @@ public class ThreadDemo {
     }
 }
 // 27. Lambda Expressions
-// Objective: Use functional programming features.
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -188,12 +193,19 @@ public class LambdaDemo {
         fruits.add("Orange");
         fruits.add("Mango");
 
+        // Print fruits before sorting
+        System.out.println("Fruits before sorting:");
+        fruits.forEach(System.out::println);
+
+        // Sort using lambda expression (case-insensitive)
         Collections.sort(fruits, (a, b) -> a.compareToIgnoreCase(b));
 
-        System.out.println("Sorted fruits:");
+        // Print fruits after sorting
+        System.out.println("\nSorted fruits:");
         fruits.forEach(System.out::println);
     }
 }
+
 // 28. Stream API
 // Objective: Process collections using streams.
 
@@ -246,8 +258,10 @@ public class RecordDemo {
 }
 // 30. Pattern Matching for switch (Java 21)
 // Objective: Simplify conditional logic with pattern matching in enhanced switch expressions.
+import java.util.Scanner;
 
 public class PatternMatchingSwitchDemo {
+
     public static void checkObjectType(Object obj) {
         switch (obj) {
             case Integer i -> System.out.println("It's an Integer: " + i);
@@ -258,11 +272,33 @@ public class PatternMatchingSwitchDemo {
         }
     }
 
+    public static Object parseInput(String input) {
+        if (input == null || input.equalsIgnoreCase("null")) {
+            return null;
+        }
+        // Try to parse Integer
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException ignored) {}
+
+        // Try to parse Double
+        try {
+            return Double.parseDouble(input);
+        } catch (NumberFormatException ignored) {}
+
+        // Return as String if not a number
+        return input;
+    }
+
     public static void main(String[] args) {
-        checkObjectType(42);
-        checkObjectType("Hello");
-        checkObjectType(3.14);
-        checkObjectType(true);
-        checkObjectType(null);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter input (type will be guessed): ");
+        String userInput = scanner.nextLine();
+
+        Object parsedObject = parseInput(userInput);
+        checkObjectType(parsedObject);
+
+        scanner.close();
     }
 }
