@@ -123,33 +123,96 @@ public class DataTypeDemo {
 // 7. Type Casting Example
 // Objective: Practice type casting between different data types.
 
+import java.util.Scanner;
+
 public class TypeCastingExample {
     public static void main(String[] args) {
-        double doubleValue = 9.78;
-        int intValue = (int) doubleValue;  // casting double to int
-        System.out.println("Double value: " + doubleValue);
-        System.out.println("Double cast to int: " + intValue);
+        Scanner scanner = new Scanner(System.in);
 
-        int anotherInt = 42;
-        double castedDouble = (double) anotherInt;  // casting int to double
-        System.out.println("Int value: " + anotherInt);
-        System.out.println("Int cast to double: " + castedDouble);
+        // Casting double to int
+        System.out.print("Enter a double value: ");
+        double doubleValue = scanner.nextDouble();
+        int intFromDouble = (int) doubleValue;
+        System.out.println("Double to int: " + intFromDouble);
+
+        // Casting int to double (implicit)
+        System.out.print("Enter an int value: ");
+        int intValue = scanner.nextInt();
+        double doubleFromInt = intValue;
+        System.out.println("Int to double: " + doubleFromInt);
+
+        // Casting int to float
+        float floatFromInt = (float) intValue;
+        System.out.println("Int to float: " + floatFromInt);
+
+        // Casting float to int
+        System.out.print("Enter a float value: ");
+        float floatValue = scanner.nextFloat();
+        int intFromFloat = (int) floatValue;
+        System.out.println("Float to int: " + intFromFloat);
+
+        // Casting int to byte
+        byte byteFromInt = (byte) intValue;
+        System.out.println("Int to byte: " + byteFromInt);
+
+        // Casting int to short
+        short shortFromInt = (short) intValue;
+        System.out.println("Int to short: " + shortFromInt);
+
+        // Casting char to int
+        System.out.print("Enter a character: ");
+        char charValue = scanner.next().charAt(0);
+        int intFromChar = charValue;
+        System.out.println("Char to int (ASCII): " + intFromChar);
+
+        // Casting int to char
+        char charFromInt = (char) intValue;
+        System.out.println("Int to char: " + charFromInt);
+
+        // Casting long to int
+        System.out.print("Enter a long value: ");
+        long longValue = scanner.nextLong();
+        int intFromLong = (int) longValue;
+        System.out.println("Long to int: " + intFromLong);
+
+        // Casting int to long (implicit)
+        long longFromInt = intValue;
+        System.out.println("Int to long: " + longFromInt);
+
+        scanner.close();
     }
 }
+
 // 8. Operator Precedence
 // Objective: Explore how Java evaluates expressions.
 
+import java.util.Scanner;
+
 public class OperatorPrecedence {
     public static void main(String[] args) {
-        int result = 10 + 5 * 2;  // multiplication before addition
-        System.out.println("Result of 10 + 5 * 2 = " + result);
-        System.out.println("Explanation: Multiplication (*) has higher precedence than addition (+), so 5 * 2 is evaluated first, then added to 10.");
+        Scanner scanner = new Scanner(System.in);
 
-        int result2 = (10 + 5) * 2;  // parentheses change order
-        System.out.println("Result of (10 + 5) * 2 = " + result2);
+        System.out.print("Enter first number: ");
+        int a = scanner.nextInt();
+
+        System.out.print("Enter second number: ");
+        int b = scanner.nextInt();
+
+        System.out.print("Enter third number: ");
+        int c = scanner.nextInt();
+
+        int result = a + b * c;
+        System.out.println("Result of " + a + " + " + b + " * " + c + " = " + result);
+        System.out.println("Explanation: Multiplication (*) has higher precedence than addition (+), so " + b + " * " + c + " is evaluated first, then added to " + a + ".");
+
+        int result2 = (a + b) * c;
+        System.out.println("Result of (" + a + " + " + b + ") * " + c + " = " + result2);
         System.out.println("Explanation: Parentheses force addition first, then multiplication.");
+
+        scanner.close();
     }
 }
+
 // 9. Grade Calculator
 // Objective: Use conditional statements to determine grades.
 
